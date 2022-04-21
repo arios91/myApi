@@ -4,17 +4,45 @@ const axios = require('axios');
 const admin = require('firebase-admin');
 const db = admin.firestore();
 const arrangements = db.collection('arrangements');
+const discounts = db.collection('discounts');
 const stripe = require('stripe')('sk_test_6eY7Gej779d3mEC51fPHukwQ')
 
 
 router.post('/testRoute', async(req,res) =>{
     console.log('IN HERE!!');
+    console.log(req.body)
     try {
         res.send('TEST PASS');
     } catch (error) {
         console.log(error);
     }
 })
+
+
+router.post('/createDiscountCode', async(req, res) => {
+    try {
+        const ref = discounts.doc();
+        ref.set(req.body)
+        res.send(200);
+    } catch (error) {
+        console.log(error);
+        res.error('error creating discount code');
+    }
+})
+
+
+
+router.post('/removeDiscountCode/:id', async(req, res) => {
+    try {
+        console.log(req.params.id)
+        discounts.doc(req.params.id).delete();
+        res.send(200);
+    } catch (error) {
+        console.log(error);
+        res.error('error creating discount code');
+    }
+})
+
 
 router.post('/toggleStatus/:id', async(req,res) => {
     try{
@@ -105,13 +133,14 @@ router.post('/setPopularity/:id/:pop', async(req, res) => {
 })
 
 
+
 router.post('/charge', async(req, res) => {
     console.log('in Charge route');
     const { totalPrice } = req.body;
     console.log(totalPrice)
     // Create a PaymentIntent with the order amount and currency
     const paymentIntent = await stripe.paymentIntents.create({
-        amount: totalPrice * 100,
+        amount: Math.round(totalPrice * 100),
         currency: "usd"
     });
 
