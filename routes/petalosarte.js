@@ -23,7 +23,7 @@ router.post('/createDiscountCode', async(req, res) => {
     try {
         const ref = discounts.doc();
         ref.set(req.body)
-        res.send(200);
+        res.sendStatus(200);
     } catch (error) {
         console.log(error);
         res.error('error creating discount code');
@@ -150,6 +150,5 @@ router.post('/charge', async(req, res) => {
 })
 
 
-//need to create main post
 
 module.exports = router;
