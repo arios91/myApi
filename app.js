@@ -3,7 +3,6 @@ const fetch = require('node-fetch');
 const express = require('express');
 const admin = require('firebase-admin');
 const bodyParser = require('body-parser');
-/* const serviceAccount = require('./keys/ServiceAccountKey.json'); */
 const keys = require('./config/keys');
 const cors = require('cors');
 const port = process.env.PORT || 8080;
