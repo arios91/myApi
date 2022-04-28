@@ -5,7 +5,8 @@ const admin = require('firebase-admin');
 const db = admin.firestore();
 const arrangements = db.collection('arrangements');
 const discounts = db.collection('discounts');
-const stripe = require('stripe')('sk_test_6eY7Gej779d3mEC51fPHukwQ')
+const keys = require('../config/keys');
+const stripe = require('stripe')(keys.stripeSecretKey);
 
 
 router.post('/testRoute', async(req,res) =>{
@@ -139,7 +140,6 @@ router.post('/setPopularity/:id/:pop', async(req, res) => {
 router.post('/charge', async(req, res) => {
     console.log('in Charge route');
     const { totalPrice } = req.body;
-    console.log(totalPrice)
     // Create a PaymentIntent with the order amount and currency
     const paymentIntent = await stripe.paymentIntents.create({
         amount: Math.round(totalPrice * 100),

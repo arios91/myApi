@@ -1,9 +1,11 @@
 module.exports = {
+  stripePublishableKey: 'pk_test_Mqk5tVgm8NXvt81KUk3iigKo',
+  stripeSecretKey: 'sk_test_6eY7Gej779d3mEC51fPHukwQ',
   nodeMailerUser: 'Alx.Rios91@gmail.com',
   nodeMailerPass: 'Rz1bBIgxVqaZdcC8',
   orderInEmail: 'alx.rios91@gmail.com',
   orderInSender: '"Petalos Arte Flower Shop" <orders@petalosarte.com>',
-  whiteList: 'https://petalosarte.com http://petalosarte.com http://localhost:3000'.split(' '),
+  whiteList: 'https://petalosarte.com http://petalosarte.com http://localhost:3000 https://petalos-arte.herokuapp.com'.split(' '),
   serviceAccountKey : {
     "type": "service_account",
     "project_id": "petalos-arte",
