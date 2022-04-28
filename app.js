@@ -17,7 +17,20 @@ const db = admin.firestore();
 
 const app = express();
 
-app.use(cors());
+
+
+const corsOptions = {
+    origin: function (origin, callback) {
+        if(keys.whiteList.indexOf(origin) > 0){
+            console.log('allowed');
+            callback(null, true);
+        }else{
+            callback(new Error('Not Allowed By CORS'));
+        }
+    }
+}
+
+app.use(cors(corsOptions));
 
 app.use(express.urlencoded({ extended: false }))
 
@@ -38,4 +51,6 @@ app.use('/email', require('./routes/email'))
 
 
 
-app.listen(port, () => {console.log(`Server started on port: ${port}`)});
+app.listen(port, () => {
+    console.log(`Server started on port: ${port}`);
+});

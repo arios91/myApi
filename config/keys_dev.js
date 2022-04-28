@@ -3,6 +3,7 @@ module.exports = {
   nodeMailerPass: 'Rz1bBIgxVqaZdcC8',
   orderInEmail: 'alx.rios91@gmail.com',
   orderInSender: '"Petalos Arte Flower Shop" <orders@petalosarte.com>',
+  whiteList: 'https://petalosarte.com http://petalosarte.com http://localhost:3000'.split(' '),
   serviceAccountKey : {
     "type": "service_account",
     "project_id": "petalos-arte",

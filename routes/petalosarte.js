@@ -12,7 +12,9 @@ router.post('/testRoute', async(req,res) =>{
     console.log('IN HERE!!');
     console.log(req.body)
     try {
+        console.log('pass')
         res.send('TEST PASS');
+        console.log('passed')
     } catch (error) {
         console.log(error);
     }
