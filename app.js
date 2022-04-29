@@ -13,8 +13,6 @@ admin.initializeApp({
     databaseURL: `https://${keys.serviceAccountKey.project_id}.firebaseio.com`
 })
 
-const db = admin.firestore();
-
 const app = express();
 
 
